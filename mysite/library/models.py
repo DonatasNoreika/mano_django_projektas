@@ -20,6 +20,7 @@ class Book(models.Model):
                             help_text='13 Simbolių <a href="https://www.isbn-international.org/content/what-isbn">ISBN kodas</a>')
     genre = models.ManyToManyField(Genre, help_text='Išrinkite žanrą(us) šiai knygai')
     # genre = models.ForeignKey('Žanras', Genre)
+    cover = models.ImageField('Viršelis', upload_to='covers', null=True)
 
 
     def __str__(self):
