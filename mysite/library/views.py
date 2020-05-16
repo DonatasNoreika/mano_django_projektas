@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from .models import Book, Author, BookInstance, Genre
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.core.paginator import Paginator
 
 # Create your views here.
 from django.http import HttpResponse
@@ -43,10 +44,21 @@ def author(request, author_id):
     single_author = get_object_or_404(Author, pk=author_id)
     return render(request, 'author.html', {'author': single_author})
 
+def authors(request):
+    paginator = Paginator(Author.objects.all(), 2)
+    page_number = request.GET.get('page')
+    paged_authors = paginator.get_page(page_number)
+    context = {
+        'authors': paged_authors
+    }
+    return render(request, 'authors.html', context=context)
+
 class BookListView(generic.ListView):
     model = Book
     template_name = 'book_list.html'
+    paginate_by = 2
 
 class BookDetailView(generic.DetailView):
     model = Book
     template_name = 'book_detail.html'
+
