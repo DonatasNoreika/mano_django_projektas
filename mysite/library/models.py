@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from datetime import date
 
 # Create your models here.
+from tinymce.models import HTMLField
+
 
 class Genre(models.Model):
     name = models.CharField('Pavadinimas', max_length=200, help_text='Įveskite knygos žanrą (pvz. detektyvas)')
@@ -75,7 +77,8 @@ class Author(models.Model):
     """Model representing an author."""
     first_name = models.CharField('Vardas', max_length=100)
     last_name = models.CharField('Pavardė', max_length=100)
-    description = models.TextField('Aprašymas', max_length=2000, default='')
+    # description = models.TextField('Aprašymas', max_length=2000, default='')
+    description = HTMLField()
 
     class Meta:
         ordering = ['last_name', 'first_name']
