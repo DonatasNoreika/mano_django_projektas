@@ -4,6 +4,13 @@
 
     <div class="container register">
         <h3>Registracija</h3><br/>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
