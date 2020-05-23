@@ -11,6 +11,18 @@
   <p><strong>ISBN:</strong> {{ book.isbn }}</p>
   <p><strong>Žanras:</strong> {{ book.genre.all|join:", " }}</p>
 
+</br>
+  <h4>Atsiliepimai:</h4>
+  {% if book.bookreview_set.all %}
+    {% for review in book.bookreview_set.all %}
+      <hr>
+      <strong>{{ review.reviewer }}</strong>, <em>{{ review.date_created}}</em>
+      <p>{{ review.content }}</p>
+    {% endfor %}
+  {% else %}
+    <p>Knyga neturi atsiliepimų</p>
+  {% endif %}
+
   <div style="margin-left:20px;margin-top:20px">
     <h4>Kopijos:</h4>
 
