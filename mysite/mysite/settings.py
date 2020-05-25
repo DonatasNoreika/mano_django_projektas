@@ -31,14 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'tinymce',
+    'library',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tinymce',
-    'library',
 ]
 
 MIDDLEWARE = [
@@ -163,7 +163,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_POST = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'donoras@gmail.com'
+EMAIL_HOST_USER = 'pythonkursascodeacademy@gmail.com'
 # el. pašto adresas iš kurio siųsite
-EMAIL_HOST_PASSWORD = 'VerySecret'
+EMAIL_HOST_PASSWORD = 'pythonkursas'
 # slaptažodis
