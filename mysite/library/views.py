@@ -1,7 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Book, Author, BookInstance, Genre
+from .models import Book, Author, BookInstance, Genre, Profilis
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.core.paginator import Paginator
@@ -100,6 +101,11 @@ def register(request):
             return redirect('register')
     return render(request, 'register.html')
 
+@login_required
+def profilis(request):
+    return render(request, 'profilis.html')
+
+
 class BookListView(generic.ListView):
     model = Book
     template_name = 'book_list.html'
@@ -148,3 +154,4 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return BookInstance.objects.filter(reader=self.request.user).filter(status__exact='p').order_by('due_back')
+
