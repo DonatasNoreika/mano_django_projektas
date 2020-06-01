@@ -165,6 +165,7 @@ class BookDetailView(FormMixin, generic.DetailView):
 
 class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
     model = BookInstance
+    context_object_name = 'books'
     template_name = 'user_books.html'
     paginate_by = 10
 
