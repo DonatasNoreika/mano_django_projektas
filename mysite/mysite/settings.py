@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'tinymce',
-    'library',
+    'library.apps.LibraryConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
