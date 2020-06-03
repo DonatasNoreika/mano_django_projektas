@@ -4,7 +4,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Book, Author, BookInstance, Genre, Profilis
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views.generic import ListView
+from django.views.generic import (
+    ListView,
+    DetailView,
+)
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
