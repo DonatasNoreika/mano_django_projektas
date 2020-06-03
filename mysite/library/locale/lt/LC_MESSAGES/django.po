@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-01 23:52+0300\n"
-"PO-Revision-Date: 2020-06-01 23:53+0300\n"
+"POT-Creation-Date: 2020-06-03 06:43+0300\n"
+"PO-Revision-Date: 2020-06-03 06:42+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -27,6 +27,14 @@ msgstr "Pavadinimas"
 #: .\models.py:26
 msgid "Summary"
 msgstr "Santrauka"
+
+#: .\models.py:26
+msgid "Shot book summary"
+msgstr "Trumpas knygos aprašymas"
+
+#: .\models.py:29
+msgid "Please choose genres"
+msgstr "Pasirinkite žanrus"
 
 #: .\models.py:31
 msgid "Cover"
@@ -91,3 +99,17 @@ msgstr "Šiandien turime"
 #: .\templates\index.html:14
 msgid "Your visits:"
 msgstr "Tavo apsilankymai:"
+
+#: .\views.py:89
+#, python-brace-format
+msgid "Username {username} already exists!"
+msgstr "Vartotojo vardas {username} jau užimtas!"
+
+#: .\views.py:94
+#, python-brace-format
+msgid "Email {email} already exists!"
+msgstr "El. pašto adresas {email} jau užregistruotas!"
+
+#: .\views.py:101
+msgid "Passwords do not match!"
+msgstr "Slaptažodžiai nesutampa!"

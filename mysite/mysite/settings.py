@@ -136,13 +136,12 @@ TINYMCE_DEFAULT_CONFIG = {
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-# LANGUAGE_CODE = 'en-us'
-
 LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'lt'
 
 LANGUAGES = (
     ('en-us', _('English')),
-    ('lt', _('Lietuvių')),
+    ('lt', _('Lithuanian')),
 )
 
 TIME_ZONE = 'UTC'
