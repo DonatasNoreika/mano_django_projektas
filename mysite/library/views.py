@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Book, Author, BookInstance, Genre, Profilis
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views import generic
+from django.views.generic import ListView
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -86,12 +86,12 @@ def register(request):
         if password == password2:
             # tikriname, ar neužimtas username
             if User.objects.filter(username=username).exists():
-                messages.error(request, _(f'Username {username} already exists!'))
+                messages.error(request, _('Username already exists!'))
                 return redirect('register')
             else:
                 # tikriname, ar nėra tokio pat email
                 if User.objects.filter(email=email).exists():
-                    messages.error(request, _(f'Email {email} already exists!'))
+                    messages.error(request, _('Email already exists!'))
                     return redirect('register')
                 else:
                     # jeigu viskas tvarkoje, sukuriame naują vartotoją
@@ -123,13 +123,13 @@ def profilis(request):
     return render(request, 'profilis.html', context)
 
 
-class BookListView(generic.ListView):
+class BookListView(ListView):
     model = Book
     template_name = 'book_list.html'
     paginate_by = 2
 
 
-class BookDetailView(FormMixin, generic.DetailView):
+class BookDetailView(FormMixin, DetailView):
     model = Book
     template_name = 'book_detail.html'
     form_class = BookReviewForm
@@ -164,7 +164,7 @@ class BookDetailView(FormMixin, generic.DetailView):
         return super(BookDetailView, self).form_valid(form)
 
 
-class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
+class LoanedBooksByUserListView(LoginRequiredMixin, ListView):
     model = BookInstance
     context_object_name = 'books'
     template_name = 'user_books.html'
