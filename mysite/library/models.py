@@ -61,7 +61,7 @@ class BookInstance(models.Model):
         max_length=1,
         choices=LOAN_STATUS,
         blank=True,
-        default='a',
+        default='p',
         help_text='Statusas',
     )
 
@@ -71,11 +71,16 @@ class BookInstance(models.Model):
             return True
         return False
 
+    def get_absolute_url(self):
+        """Nurodo konkretaus aprašymo galinį adresą"""
+        return reverse('my-book', kwargs={'pk': self.pk})
+
     class Meta:
         ordering = ['due_back']
 
     def __str__(self):
         return f'{self.id} ({self.book.title})'
+
 
 class Author(models.Model):
     """Model representing an author."""

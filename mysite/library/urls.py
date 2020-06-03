@@ -11,6 +11,7 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('mybooks/<int:pk>', views.BookByUserDetailView.as_view(), name='my-book'),
     path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
+    path('mybooks/new', views.BookByUserCreateView.as_view(), name='my-borrowed-new'),
     path('register/', views.register, name='register'),
     path('profilis/', views.profilis, name='profilis'),
     path(r'^i18n/', include('django.conf.urls.i18n')),
