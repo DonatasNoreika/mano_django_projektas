@@ -9,6 +9,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView,
 )
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -185,6 +186,7 @@ class BookByUserDetailView(LoginRequiredMixin, DetailView):
 class BookByUserCreateView(LoginRequiredMixin, CreateView):
     model = BookInstance
     fields = ['book', 'due_back']
+    success_url = "/library/mybooks/"
     template_name = 'user_book_form.html'
 
     def form_valid(self, form):
@@ -205,3 +207,11 @@ class BookByUserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         book = self.get_object()
         return self.request.user == book.reader
 
+class BookByUserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = BookInstance
+    success_url = "/library/mybooks/"
+    template_name = 'user_book_delete.html'
+
+    def test_func(self):
+        book = self.get_object()
+        return self.request.user == book.reader

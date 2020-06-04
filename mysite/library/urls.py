@@ -13,6 +13,7 @@ urlpatterns = [
     path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
     path('mybooks/new', views.BookByUserCreateView.as_view(), name='my-borrowed-new'),
     path('mybooks/<int:pk>/update', views.BookByUserUpdateView.as_view(), name='my-book-update'),
+    path('mybooks/<int:pk>/delete', views.BookByUserDeleteView.as_view(), name='my-book-delete'),
     path('register/', views.register, name='register'),
     path('profilis/', views.profilis, name='profilis'),
     path(r'^i18n/', include('django.conf.urls.i18n')),
