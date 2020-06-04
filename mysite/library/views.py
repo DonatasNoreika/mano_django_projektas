@@ -8,6 +8,7 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
+    UpdateView,
 )
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -181,7 +182,7 @@ class BookByUserDetailView(LoginRequiredMixin, DetailView):
     model = BookInstance
     template_name = 'user_book.html'
 
-class BookByUserCreateView(CreateView):
+class BookByUserCreateView(LoginRequiredMixin, CreateView):
     model = BookInstance
     fields = ['book', 'due_back']
     template_name = 'user_book_form.html'
@@ -189,5 +190,4 @@ class BookByUserCreateView(CreateView):
     def form_valid(self, form):
         form.instance.reader = self.request.user
         return super().form_valid(form)
-
 
